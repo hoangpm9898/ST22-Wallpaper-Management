@@ -1,0 +1,218 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallpapers Management</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/main_fix.css">
+    <link rel="stylesheet" href="/css/albums_mng_popup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Wallpapers Management</h1>
+        <div class="filters">
+            <select id="providerSelect">
+            </select>
+            <select id="topicSelect">
+            </select>
+            <select id="styleSelect">
+            </select>
+            <select id="typeSelect">
+            </select>
+            <select id="trackSelect">
+            </select>
+            <select id="sizeSelect">
+                <option value="All">All Size</option>
+                <option value="576x1024">Min 576x1024</option>
+                <option value="720x1280">Min 720x1280</option>
+            </select>
+            <button id="fetchTrackBtn" class="fetch-track-btn">Fetch New Wallpapers</button>
+        </div>
+    </header>
+
+    <!-- Main body: List all wallpapers -->
+    <main>
+        <div id="profilesGrid" class="profiles-grid"></div>
+    </main>
+
+    <!-- Popup: Review wallpapers -->
+    <div id="popupOverlay" class="popup-overlay hidden">
+      <div id="view-popup" class="view-popup">
+        <button class="nav-button prev"><i class="fas fa-chevron-left"></i></button>
+        <img id="popupImage" src="" alt="Wallpaper">
+        <button class="nav-button next"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+
+    <!-- Popup: Add single wallpaper into Album -->
+    <div id="albumPopupOverlay" class="menu-hidden">
+      <div class="album-menu">
+
+        <!-- <button class="close-menu" onclick="hideAlbumPopup()"><i class="fas fa-times"></i></button> -->
+        <h3>🐼 Select Albums</h3>
+
+        <button id="createAlbumBtn"><i class="fas fa-plus"></i> Create New Album</button>
+        <div id="createAlbumForm" class="create-album-hidden">
+            <input type="text" id="newAlbumName" placeholder="Enter album name">
+            <div class="form-buttons">
+                <button id="submitAlbumBtn"><i class="fas fa-check"></i></button>
+                <button id="cancelCreateBtn"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+
+        <div id="albumList"></div>
+
+        <hr class="album-divider">
+        <div id="selectedAlbumImages"></div>
+
+        <hr class="album-divider">
+        <div class="album-buttons">
+          <button id="acceptAlbumBtn">Accept</button>
+          <button id="cancelAlbumBtn">Cancel</button>
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- Button: Show Add multiple wallpapers popup -->
+    <div class="add-selected-albums-trigger" onclick="showAddMultipleWallpapersToAlbumPopup();">
+        <i class="fas fa-square-plus"></i>
+        <span class="trigger-text">Add Selected</span>
+    </div>
+
+    <!-- Popup: Add multiple wallpapers into Album -->
+    <div id="add-multiple-popup" class="add-multiple-overlay">
+        <div class="add-multiple-content">
+            <div class="add-multiple-header">
+                <h3 id="add-multiple-title">🥝 Add <span id="add-multiple-selected-count">0</span> Wallpapers Into Album...</h3>
+                <span class="add-multiple-close-icon" id="add-multiple-cancel-btn">✕</span>
+            </div>
+            <div id="add-multiple-album-list" class="add-multiple-album-list"></div>
+            <div class="add-multiple-actions">
+                <button id="add-multiple-add-btn" class="add-multiple-action-btn add-multiple-btn"><i class="fas fa-plus"></i> Add Wallpapers</button>
+            </div>
+            <div id="add-multiple-log" class="add-multiple-log"></div>
+        </div>
+    </div>
+
+    <!-- Button: Show Album management popup -->
+    <div id="viewAlbumsTrigger" class="view-albums-trigger">
+        <i class="fas fa-images"></i>
+        <span class="trigger-text">Albums</span>
+    </div>
+
+    <!-- Popup: Album management -->
+    <div id="viewAlbumsPopupOverlay" class="view-albums-popup">
+        <div class="view-albums-menu">
+
+            <!-- Header -->
+            <button class="view-albums-close-menu" onclick="hideViewPopup()"><i class="fas fa-times"></i></button>
+            <h3>️🏀 Albums Management 🏀</h3>
+
+            <!-- Info -->
+            <p id="view-albums-title"></p>
+
+            <!-- Body with Three Columns -->
+            <div class="view-albums-body">
+
+                <!-- Column 1: Album Creation & List -->
+                <div class="album-list-column">
+                    <button id="create-album-btn" class="create-view-album-btn"><i class="fas fa-plus"></i> Create Album</button>
+                    <div id="create-album-form" class="create-album-form">
+                        <input type="text" id="new-album-name" placeholder="Enter album name">
+                        <div class="form-actions">
+                            <button id="submit-album-btn"><i class="fas fa-check"></i></button>
+                            <button id="cancel-album-btn"><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+                    <ul id="album-list"></ul>
+                </div>
+
+                <!-- Column 2: Wallpapers Grid -->
+                <div class="wallpapers-grid-column">
+                    <div id="wallpapers-grid" class="wall-grid">
+                      <p style="color: darkgrey; text-align: center; position: relative; left: 215px; top: 175px; width: 136px;">🙏 Select a album!</p>
+                    </div>
+                </div>
+
+                <!-- Column 3: Wallpaper Details -->
+                <div class="wallpaper-details-column">
+                    <div id="wallpaper-details" class="wallpaper-details">
+                        <p><strong>Album ID</strong></p>
+                        <p><span id="detail-album-id">-</span></p>
+                        <p><strong>Album Name</strong></p>
+                        <p><input id="detail-album-name" type="text" placeholder="Enter album name"></p>
+                        <p><strong>Album Category</strong></p>
+                        <p>
+                            <select id="detail-album-category" name="category">
+                                <option value="" selected>Select a category</option>
+                                <option value="custom">Enter a new category name</option>
+                            </select>
+                            <input id="detail-album-category-custom" type="text" placeholder="Enter new category name" style="display: none;">
+                        </p>
+                        <p><strong>Album Tags</strong></p>
+                        <p><input id="detail-album-tags" type="text" placeholder="Enter tags (separated by a ',')"></p>
+                        <p><strong>Album Countries</strong></p>
+                        <p><input id="detail-album-countries" type="text" placeholder="Enter countries (separated by ',')"></p>
+                        <p><strong>Total Wallpapers</strong></p>
+                        <p><span id="detail-album-total-wallpapers">-</span></p>
+                        <div class="album-info"><i class="fa fa-info-circle" aria-hidden="true"></i></div>
+                    </div>
+                    <div class="form-update-actions">
+                        <button id="update-album-btn"><i class="fa-solid fa-rotate"></i> Update Album</button>
+                        <button id="delete-album-btn"><i class="fa-solid fa-trash-can"></i> Delete Album</button>
+                        <button id="verify-album-btn"><i class="fa-solid fa-check-circle"></i> Verify NSFW Content</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/main.js"></script>
+    <script src="/js/albums_mng_popup.js"></script>
+    <script src="/js/tags_countries_popup.js"></script>
+</body>
+</html>

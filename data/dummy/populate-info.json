@@ -1,0 +1,44 @@
+{
+    "status": "success",
+    "data": {
+        "track_ids": [
+            14,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            31,
+            32,
+            33,
+            34,
+            35,
+            37,
+            39,
+            41,
+            42,
+            43,
+            44
+        ],
+        "providers": [
+            "seaart.ai"
+        ],
+        "topics": [
+            "Asian Girls",
+            "Sci-fi Girls",
+            "Euro Girls",
+            "Tattoo Girls",
+            "Global Girls",
+            "India Girls",
+            "Asean Girls"
+        ],
+        "styles": [
+            "Synthetic"
+        ],
+        "types": [
+            "User_Work",
+            "User_Collection"
+        ]
+    }
+}

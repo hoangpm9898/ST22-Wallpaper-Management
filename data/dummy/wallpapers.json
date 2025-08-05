@@ -1,0 +1,57 @@
+{
+    "data": [
+        {
+            "id": "ctq2eqde878c73b1hp5g",
+            "image_url": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2024-12-31/ctq2eade878c73d8ro40-2/fb3e3e3dd8036e9b4aeeaa5a6a4b5767_low.webp",
+            "model_id": "f8172af6747ec762bcf847bd60fdf7cd",
+            "author_id": "9172cdf309ae95c416b0d898dbfecc22",
+            "folder_no": "default",
+            "tracking_type": "work",
+            "tracking_collection_id": 44
+        },
+        {
+            "id": "ctpiurde878c739ul7j0",
+            "image_url": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2024-12-30/ctpiu75e878c739c3o3g-1/6457c8978a56cf7a740571fe557832ce_low.webp",
+            "model_id": "f8172af6747ec762bcf847bd60fdf7cd",
+            "author_id": "9172cdf309ae95c416b0d898dbfecc22",
+            "folder_no": "default",
+            "tracking_type": "work",
+            "tracking_collection_id": 44
+        },
+        {
+            "id": "cual6a5e878c73bpovg0",
+            "image_url": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2025-01-25/cual5ude878c738niub0-2/d7087ea983e63aaa2e32fee4b54e1e18_low.webp",
+            "model_id": "f8172af6747ec762bcf847bd60fdf7cd",
+            "author_id": "9172cdf309ae95c416b0d898dbfecc22",
+            "folder_no": "default",
+            "tracking_type": "work",
+            "tracking_collection_id": 44
+        },
+        {
+            "id": "cq9jvn5e878c73803qp0",
+            "image_url": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2024-07-14/cq9jvd5e878c73ek39u0/f5c571abdc695acbb74d9f53b6bf5a5676504dbb_low.webp",
+            "model_id": "1a486c58c2aa0601b57ddc263fc350d0",
+            "author_id": "9172cdf309ae95c416b0d898dbfecc22",
+            "folder_no": "default",
+            "tracking_type": "work",
+            "tracking_collection_id": 44
+        },
+        {
+            "id": "ctpj0hle878c739cjt10",
+            "image_url": "https://image.cdn2.seaart.me/temp-convert-webp/highwebp/2024-12-30/ctpj02de878c73fh0obg-1/61bcae073bb54e2a9fc14c90c3618643_low.webp",
+            "model_id": "f8172af6747ec762bcf847bd60fdf7cd",
+            "author_id": "9172cdf309ae95c416b0d898dbfecc22",
+            "folder_no": "default",
+            "tracking_type": "work",
+            "tracking_collection_id": 44
+        }
+    ],
+    "pagination": {
+        "page": 1,
+        "page_size": 100,
+        "total_items": 10187,
+        "total_pages": 102,
+        "has_next": true,
+        "has_prev": false
+    }
+}

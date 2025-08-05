@@ -1,0 +1,80 @@
+[
+    {
+        "id": 1750615232293,
+        "name": "Sport Girls",
+        "thumb": "d0hc325e878c73f6hc10",
+        "categoryId": 3,
+        "tags": [
+            "SportyGirl",
+            "UrbanAthletic",
+            "RunningVibes",
+            "StreetWorkout",
+            "BasketballBeauty",
+            "ActiveLifestyle",
+            "HoodieStyle",
+            "OutdoorTraining",
+            "EnergeticMood",
+            "YouthSportStyle"
+        ],
+        "countries": [
+            "HK",
+            "JP",
+            "KR",
+            "TW",
+            "VN"
+        ],
+        "wallpaperIds": [
+            "d0gs7rte878c73bsqrig",
+            "d0gm6cte878c73cbjsbg",
+            "d0gs8kle878c73cb99r0",
+            "d0gsgjte878c73bt7dbg",
+            "d0gsjole878c73curmo0",
+            "d0gsgv5e878c73cblbjg",
+            "d0hc9t5e878c738ghmlg",
+            "d0hc325e878c73f6hc10",
+            "d0hbqcte878c73dm0a0g",
+            "d0hc695e878c738gckog",
+            "d0hc7r5e878c73dmjvvg",
+            "d0hbo2te878c738fnipg",
+            "d0hb7ste878c73f59kj0",
+            "d0har65e878c738ee0b0",
+            "d0harote878c73a9al5g",
+            "d0hanfte878c73dke6d0",
+            "d0i591de878c739cchng",
+            "d0i5njde878c739d0b2g",
+            "d0i5q2te878c73e7q2kg",
+            "d0i5og5e878c73ae46eg",
+            "d0h7gule878c73a4vrk0",
+            "d0h7mbte878c73dgeoe0",
+            "d0h93jle878c73f2a8kg",
+            "d0h93bde878c73a6rtt0",
+            "d0hdf1de878c73ad039g",
+            "d0emfpde878c739a0u6g",
+            "cqkqb6te878c73cnq6s0",
+            "cqk6i6le878c739o0pu0"
+        ],
+        "nsfw": {
+            "adult": [],
+            "racy": [
+                "d0gsjole878c73curmo0",
+                "d0gsgv5e878c73cblbjg",
+                "d0hc9t5e878c738ghmlg",
+                "d0hc325e878c73f6hc10",
+                "d0hbqcte878c73dm0a0g",
+                "d0hc7r5e878c73dmjvvg",
+                "d0hbo2te878c738fnipg",
+                "d0hb7ste878c73f59kj0",
+                "d0harote878c73a9al5g",
+                "d0i591de878c739cchng",
+                "d0i5njde878c739d0b2g",
+                "d0i5q2te878c73e7q2kg",
+                "d0i5og5e878c73ae46eg",
+                "d0h7mbte878c73dgeoe0",
+                "d0hdf1de878c73ad039g",
+                "d0emfpde878c739a0u6g",
+                "cqk6i6le878c739o0pu0"
+            ]
+        },
+        "mapStatus": true
+    }
+]
