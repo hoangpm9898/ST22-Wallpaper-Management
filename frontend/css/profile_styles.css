@@ -1,0 +1,31 @@
+/* ===== PROFILE SPECIFIC STYLES ===== */
+
+/* Profile wallpaper ID label */
+.profile-wallpaper-id {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 4px 6px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 0.7rem;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* Upload icon styles for profile */
+.wallpaper-icon.upload-icon {
+    color: #10b981;
+    font-size: 1.5rem;
+    cursor: pointer;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s ease;
+}
+
+.wallpaper-icon.upload-icon:hover {
+    transform: scale(1.2);
+    color: #059669;
+}

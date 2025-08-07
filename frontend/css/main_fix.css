@@ -713,14 +713,14 @@
 .add-selected-albums-trigger {
     position: fixed;
     left: 0;
-    top: 28vh;
+    top: 32vh;
     width: 50px;
     height: 50px;
     background: linear-gradient(135deg, #6b6eff, #53baff);
     border-radius: 0 15px 15px 0;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     color: #ffffff;
     cursor: pointer;
     z-index: 1002;
@@ -737,12 +737,48 @@
 .add-selected-albums-trigger i {
     font-size: 1.4rem;
     filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.2));
-    transition: transform 0.3s ease;
-    margin-left: 120px;
+    transition: all 0.3s ease;
+    margin-left: 12px;
 }
 .add-selected-albums-trigger:hover i {
     transform: rotate(360deg);
-    margin-left: 0px;
+    margin-left: 15px;
+}
+
+/* Add to Profile Button */
+.add-selected-profiles-trigger {
+    position: fixed;
+    left: 0;
+    top: 44vh;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+    border-radius: 0 15px 15px 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: #ffffff;
+    cursor: pointer;
+    z-index: 1002;
+    box-shadow: 0 8px 24px rgba(255, 107, 107, 0.3);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    overflow: hidden;
+}
+.add-selected-profiles-trigger:hover {
+    width: 190px;
+    background: linear-gradient(135deg, #ff5252, #ff9800);
+    box-shadow: 0 12px 32px rgba(255, 141, 83, 0.4);
+    transform: translateX(0px);
+}
+.add-selected-profiles-trigger i {
+    font-size: 1.4rem;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.2));
+    transition: all 0.3s ease;
+    margin-left: 12px;
+}
+.add-selected-profiles-trigger:hover i {
+    transform: rotate(360deg);
+    margin-left: 15px;
 }
 
 /* Checkbox (Selection) in wall[paper */
@@ -807,12 +843,12 @@
 
 .add-multiple-overlay {
     position: fixed;
-    top: 150px;
-    left: -720px;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    /* background: rgba(0, 0, 0, 0.5); */
-    /* backdrop-filter: blur(12px); */
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(12px);
     display: none;
     align-items: center;
     justify-content: center;
@@ -827,8 +863,7 @@
 }
 
 .add-multiple-content {
-    /* background: linear-gradient(145deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05)); */
-    /* background: darkslateblue; */
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
     backdrop-filter: blur(30px);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 16px;

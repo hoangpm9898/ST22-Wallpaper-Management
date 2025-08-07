@@ -48,6 +48,7 @@
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/main_fix.css">
     <link rel="stylesheet" href="/css/albums_mng_popup.css">
+    <link rel="stylesheet" href="/css/profile_styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
@@ -120,7 +121,13 @@
     <!-- Button: Show Add multiple wallpapers popup -->
     <div class="add-selected-albums-trigger" onclick="showAddMultipleWallpapersToAlbumPopup();">
         <i class="fas fa-square-plus"></i>
-        <span class="trigger-text">Add Selected</span>
+        <span class="trigger-text">Add to Album</span>
+    </div>
+
+    <!-- Button: Show Add multiple wallpapers to profile popup -->
+    <div class="add-selected-profiles-trigger" onclick="showAddMultipleWallpapersToProfilePopup();">
+        <i class="fas fa-user-plus"></i>
+        <span class="trigger-text">Add to Profile</span>
     </div>
 
     <!-- Popup: Add multiple wallpapers into Album -->
@@ -211,8 +218,69 @@
         </div>
     </div>
 
+    <!-- Button: Show Profile management popup -->
+    <div id="viewProfilesTrigger" class="view-profiles-trigger">
+        <i class="fas fa-user"></i>
+        <span class="trigger-text">Profiles</span>
+    </div>
+
+    <!-- Popup: Profile management -->
+    <div id="viewProfilesPopupOverlay" class="view-albums-popup">
+        <div class="view-albums-menu">
+            <!-- Header -->
+            <button class="view-albums-close-menu" onclick="hideViewProfilesPopup()"><i class="fas fa-times"></i></button>
+            <h3>👤 Profiles Management 👤</h3>
+            <!-- Info -->
+            <p id="view-profiles-title"></p>
+            <!-- Body with Two Columns -->
+            <div class="view-albums-body">
+                <!-- Column 1: Profile Creation & List -->
+                <div class="album-list-column">
+                    <button id="create-profile-btn" class="create-view-album-btn"><i class="fas fa-plus"></i> Create Profile</button>
+                    <div id="create-profile-form" class="create-album-form">
+                        <input type="text" id="new-profile-name" placeholder="Enter profile name">
+                        <div class="form-actions">
+                            <button id="submit-profile-btn"><i class="fas fa-check"></i></button>
+                            <button id="cancel-profile-btn"><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+                    <ul id="profile-list"></ul>
+                </div>
+                <!-- Column 2: Wallpapers Grid (for selected profile) -->
+                <div class="wallpapers-grid-column">
+                    <div id="profile-wallpapers-grid" class="wall-grid">
+                        <p style="color: darkgrey; text-align: center; position: relative; left: 215px; top: 175px; width: 136px;">🙏 Select a profile!</p>
+                    </div>
+                </div>
+                <!-- Column 3: Profile Details -->
+                <div class="wallpaper-details-column">
+                    <div id="profile-details" class="wallpaper-details">
+                        <p><strong>Profile ID</strong></p>
+                        <p><span id="detail-profile-id">-</span></p>
+                        <p><strong>Profile Name</strong></p>
+                        <p><input id="detail-profile-name" type="text" placeholder="Enter profile name"></p>
+                        <p><strong>Avatar Image</strong></p>
+                        <p><input id="detail-profile-avatar" type="hidden" placeholder="Avatar image path">
+                        <span id="detail-profile-avatar-display" style="color: #999; font-size: 0.85rem;">No avatar uploaded</span></p>
+                        <p><strong>Background Image</strong></p>
+                        <p><input id="detail-profile-background" type="hidden" placeholder="Background image path">
+                        <span id="detail-profile-background-display" style="color: #999; font-size: 0.85rem;">No background uploaded</span></p>
+                        <p><strong>Total Wallpapers</strong></p>
+                        <p><span id="detail-profile-total-wallpapers">-</span></p>
+                        <div class="album-info"><i class="fa fa-info-circle" aria-hidden="true"></i></div>
+                    </div>
+                    <div class="form-update-actions">
+                        <button id="update-profile-btn"><i class="fa-solid fa-rotate"></i> Update Profile</button>
+                        <button id="delete-profile-btn"><i class="fa-solid fa-trash-can"></i> Delete Profile</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="/js/main.js"></script>
     <script src="/js/albums_mng_popup.js"></script>
     <script src="/js/tags_countries_popup.js"></script>
+    <script src="/js/profile_mng_popup.js"></script>
 </body>
 </html>

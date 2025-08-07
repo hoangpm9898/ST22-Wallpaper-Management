@@ -2,24 +2,24 @@
 .view-albums-trigger {
     position: fixed;
     left: 0;
-    top: 22vh;
+    top: 20vh;
     width: 50px;
     height: 50px;
     background: linear-gradient(135deg, #ff6b6b, #ff8e53);
     border-radius: 0 15px 15px 0;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     color: #ffffff;
     cursor: pointer;
     z-index: 1002;
-    box-shadow: 0 8px 24px rgba(255, 107, 107, 0.3);
+    box-shadow: 0 8px 24px rgba(255, 142, 83, 0.3);
     transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     overflow: hidden;
 }
 
 .view-albums-trigger:hover {
-    width: 140px;
+    width: 170px;
     background: linear-gradient(135deg, #ff8e53, #ffd166);
     box-shadow: 0 12px 32px rgba(255, 141, 83, 0.4);
     transform: translateX(0px);
@@ -28,13 +28,13 @@
 .view-albums-trigger i {
     font-size: 1.4rem;
     filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.2));
-    transition: transform 0.3s ease;
-    margin-left: 70px;
+    transition: all 0.3s ease;
+    margin-left: 12px;
 }
 
 .view-albums-trigger:hover i {
     transform: rotate(360deg);
-    margin-left: 0px;
+    margin-left: 15px;
 }
 
 .trigger-text {
@@ -43,7 +43,7 @@
     font-size: 1.2rem;
     font-weight: 650;
     color: snow;
-    margin-left: 10px;
+    margin-left: 8px;
     white-space: nowrap;
     transition: all 0.3s ease;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
@@ -55,6 +55,282 @@
 .add-selected-albums-trigger:hover .trigger-text {
     opacity: 1;
     visibility: visible;
+}
+.add-selected-profiles-trigger:hover .trigger-text {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* View Profiles Trigger Button */
+.view-profiles-trigger {
+    position: fixed;
+    left: 0;
+    top: 56vh;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #a55eea, #fd79a8);
+    border-radius: 0 15px 15px 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: #ffffff;
+    cursor: pointer;
+    z-index: 1002;
+    box-shadow: 0 8px 24px rgba(165, 94, 234, 0.3);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    overflow: hidden;
+}
+
+.view-profiles-trigger:hover {
+    width: 140px;
+    background: linear-gradient(135deg, #8b5cf6, #f093fb);
+    box-shadow: 0 12px 32px rgba(165, 94, 234, 0.4);
+    transform: translateX(0px);
+}
+
+.view-profiles-trigger i {
+    font-size: 1.4rem;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.2));
+    transition: all 0.3s ease;
+    margin-left: 12px;
+}
+
+.view-profiles-trigger:hover i {
+    transform: rotate(360deg);
+    margin-left: 15px;
+}
+
+.view-profiles-trigger:hover .trigger-text {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Profile wallpaper display enhancements */
+.profile-wallpaper-item {
+    position: relative;
+    display: inline-block;
+    margin: 8px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.profile-wallpaper-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Image upload elements */
+.image-upload-item {
+    border: 2px dashed #e0e0e0;
+    background: linear-gradient(145deg, #f8f9fa, #ffffff);
+}
+
+.image-upload-item:hover {
+    border-color: #60a5fa;
+    background: linear-gradient(145deg, #f0f8ff, #f8f9fa);
+}
+
+.image-upload-zone {
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.image-upload-zone.drag-over {
+    background: rgba(96, 165, 250, 0.1);
+    border-color: #60a5fa;
+}
+
+.upload-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+    width: 120px;
+    color: #9ca3af;
+    background: #f9fafb;
+    border-radius: 6px;
+}
+
+.upload-placeholder i {
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+    color: #d1d5db;
+}
+
+.upload-placeholder span {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-align: center;
+    color: #6b7280;
+}
+
+.upload-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 6px;
+}
+
+.image-upload-zone:hover .upload-overlay {
+    opacity: 1;
+}
+
+.upload-overlay i {
+    font-size: 1.5rem;
+    margin-bottom: 4px;
+}
+
+.upload-overlay span {
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.upload-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+    width: 120px;
+    color: #60a5fa;
+    background: #f0f8ff;
+    border-radius: 6px;
+}
+
+.upload-loading i {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+}
+
+.upload-loading span {
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.profile-action-btn.upload-btn {
+    background: #10b981;
+    color: white;
+}
+
+.profile-action-btn.upload-btn:hover {
+    background: #059669;
+}
+
+.profile-wallpaper-image {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+}
+
+.profile-wallpaper-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.profile-wallpaper-placeholder {
+    width: 120px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #f5f5f5;
+    color: #999;
+    font-size: 0.8rem;
+}
+
+.profile-wallpaper-placeholder i {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.thumb-badge {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background: linear-gradient(45deg, #ff6b6b, #ffa500);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.profile-wallpaper-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px;
+    background: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    transition: opacity 0.2s ease;
+}
+
+.profile-wallpaper-item:hover .profile-wallpaper-actions {
+    opacity: 1;
+}
+
+.profile-action-btn {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    padding: 6px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #333;
+    font-size: 0.8rem;
+    transition: all 0.2s ease;
+    min-width: 30px;
+}
+
+.profile-action-btn:hover {
+    background: white;
+    transform: scale(1.1);
+}
+
+.profile-action-btn.remove-btn:hover {
+    background: #ff4757;
+    color: white;
+}
+
+.profile-action-btn.thumb-btn:hover {
+    background: #ffa502;
+    color: white;
+}
+
+.profile-wallpaper-id {
+    padding: 4px 6px;
+    background: #f8f9fa;
+    font-size: 0.7rem;
+    color: #666;
+    text-align: center;
+    border-top: 1px solid #eee;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 120px;
 }
 
 /* Popup overlay styles */
@@ -347,7 +623,699 @@
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     background: linear-gradient(135deg, blue, #6900a5);;
     flex-shrink: 0; /* Ngăn span bị co lại */
-    margin-left: 10px; /* Khoảng cách giữa text và span */
+    margin-left: 8px; /* Khoảng cách giữa text và span */
+}
+
+/* Column 2: Wallpapers Grid */
+.wallpapers-grid-column {
+    flex: 1.1;
+    padding: 0 15px 0 0;
+    overflow-y: auto;
+    max-height: 570px;
+}
+
+.wallpapers-grid-column::-webkit-scrollbar {
+    width: 3px;
+}
+.wallpapers-grid-column::-webkit-scrollbar-track {
+    background: transparent;
+}
+.wallpapers-grid-column::-webkit-scrollbar-thumb {
+    background: rgb(81, 81, 81);
+    border-radius: 3px;
+}
+
+.wall-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.wallpaper-thumb {
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transform: all 0.3s ease;
+}
+
+.wallpaper-thumb:hover {
+    transform: translateY(-5px); /* Nhấc lên nhẹ khi hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Đổ bóng mạnh hơn */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wallpaper-thumb.selected {
+    border: 3px solid blueviolet;
+    box-shadow: 0 0 16px rgba(96, 165, 250, 0.5);
+}
+
+/* Column 3: Wallpaper Details */
+.wallpaper-details-column {
+    flex: 0.5;
+    padding-left: 12px;
+}
+
+.wallpaper-details, .country-info-popup, .tag-info-popup {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    padding: 15px 15px 20px 15px;
+    height: 380px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+.wallpaper-details h4, .country-info-popup h4, .tag-info-popup h4 {
+    margin: 0 0 12px;
+    color: antiquewhite;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(96, 165, 250, 0.2);
+}
+.wallpaper-details p {
+    margin: 8px 0;
+    font-size: 0.95rem;
+    color: darkgray;
+}
+.wallpaper-details span, .country-info-popup span, .tag-info-popup span {
+    color: burlywood;
+    font-size: 0.85rem;
+    font-weight: 400;
+}
+.country-info-popup p, .tag-info-popup p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 8px 0;
+    font-size: 0.95rem;
+    color: #cacaca;
+    cursor: pointer;
+}
+.country-info-popup p:hover, .tag-info-popup p:hover {
+    background-color: slateblue;
+}
+.country-info-popup::-webkit-scrollbar, .tag-info-popup::-webkit-scrollbar {
+    width: 3px;
+}
+.country-info-popup::-webkit-scrollbar-track, .tag-info-popup::-webkit-scrollbar-track {
+    background: transparent;
+}
+.country-info-popup::-webkit-scrollbar-thumb, .tag-info-popup::-webkit-scrollbar-thumb {
+    background: rgb(81, 81, 81);
+    border-radius: 3px;
+}
+
+.album-info {
+    position: absolute;
+    top: 12;
+    right: 12;
+    cursor: pointer;
+}
+.album-info span {
+    color: #fff;
+    padding: 2px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    background-color: rgb(73, 73, 73);
+}
+.album-info i:hover {
+    transform: scale(1.2);
+}
+
+/* Vertical Divider */
+.view-album-divider.vertical {
+    border: 0;
+    border-left: 1px solid whitesmoke;
+    opacity: 0.3;
+}
+
+
+/* ----------------------------------------------------- */
+
+
+/* Wallpaper wrapper for relative positioning */
+.wallpaper-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+/* Wallpaper overlay for hover effect */
+.wallpaper-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.wallpaper-wrapper:hover .wallpaper-overlay {
+    opacity: 1;
+}
+
+/* Wallpaper icons */
+.wallpaper-icon {
+    color: #ffffff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s ease;
+}
+
+.wallpaper-icon:hover {
+    transform: scale(1.2);
+}
+
+/* Deleted state */
+.wallpaper-wrapper.deleted .wallpaper-overlay {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.wallpaper-wrapper.deleted .wallpaper-icon {
+    display: none; /* Hide icons when deleted */
+}
+
+/* Update button */
+.update-album-btn {
+    display: block;
+    margin: 16px auto;
+    padding: 10px 20px;
+    background: linear-gradient(90deg, #2563eb, #4f46e5);
+    border: none;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.update-album-btn:hover {
+    background: linear-gradient(90deg, #1d4ed8, #4338ca);
+    transform: translateY(-2px);
+}
+.update-album-btn:disabled {
+    background: #6b7280;
+    cursor: not-allowed;
+}
+
+/* Link button */
+a#detail-quality-url {
+    display: inline-block;
+    padding: 5px 7px;
+    background-color: blueviolet;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+a#detail-quality-url:hover {
+  background-color: rgb(122, 39, 201);
+  transform: translateY(-2px);
+}
+a#detail-quality-url:active {
+  transform: translateY(0);
+}
+
+/* Album name input */
+#detail-album-name, #detail-album-category, #detail-album-tags, #detail-album-countries, #detail-profile-name {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 1px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #f3f4f6;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+#detail-album-name:focus, #detail-album-category:focus, #detail-album-tags:focus, #detail-album-countries:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+#detail-album-name::placeholder, #detail-album-category::placeholder, #detail-album-tags::placeholder, #detail-album-countries::placeholder {
+    color: #6b7280;
+}
+
+/* Is Thumb checkbox */
+#detail-is-thumb {
+    width: 20px;
+    height: 20px;
+    margin-left: 0px;
+    margin-bottom: 7px;
+    vertical-align: middle;
+    accent-color: #ff8e53;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 2px solid #d1d5db;
+    background-color: #ffffff;
+    transition: all 0.2s ease;
+}
+#detail-is-thumb:checked {
+    background-color: #3b82f6;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+#detail-is-thumb:hover {
+    border-color: #93c5fd;
+}
+#detail-is-thumb:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* Indicators */
+.thumb-indicator {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: linear-gradient(45deg, #ff1744, #e91e63);
+    color: #ffffff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(255, 23, 68, 0.4);
+    z-index: 3;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Thumb icon */
+.thumb-icon {
+    color: #ffffff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s ease;
+}
+.thumb-icon:hover {
+    transform: scale(1.2);
+    color: #facc15;
+}
+
+.top-right-div {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    z-index: 3;
+}
+.adult-indicator,
+.racy-indicator {
+    display: block;
+    color: #fff;
+    padding: 3px 6px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    margin-bottom: 2px;
+}
+.adult-indicator {
+    background: linear-gradient(45deg, #d32f2f, #f44336);
+}
+.racy-indicator {
+    background: linear-gradient(45deg, #3500f5, #673ab7);
+}
+
+.form-update-actions button i {
+    margin-right: 4px; /* Khoảng cách giữa icon và text, có thể điều chỉnh */
+    vertical-align: middle; /* Căn giữa icon với text */
+}
+
+#view-albums-title {
+    text-align: center;
+    margin-top: -20px;
+    margin-bottom: 30px;
+    color: burlywood;
+}
+#albums-info-count {
+    color: tomato;
+}
+
+/* Checklist of category name */
+#detail-album-category, #detail-album-category-custom {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 1px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #f3f4f6;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+#detail-album-category {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='rgba(255,255,255,0.7)' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position-x: calc(100% - 10px);
+    background-position-y: center;
+    padding-right: 36px; /* Space for the arrow */
+}
+#detail-album-category:hover, #detail-album-category-custom:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.12);
+}
+#detail-album-category:focus, #detail-album-category-custom:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+}
+#detail-album-category option {
+    background: #2d2d2d;
+    color: #f3f4f6;
+    font-size: 0.9rem;
+}
+
+
+
+.trigger-text {
+    opacity: 0;
+    visibility: hidden;
+    font-size: 1.2rem;
+    font-weight: 650;
+    color: snow;
+    margin-left: 8px;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.view-profiles-trigger:hover .trigger-text {
+    opacity: 1;
+    visibility: visible;
+}
+.view-profiles-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.view-profiles-popup.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.view-profiles-menu {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 24px;
+    width: 1200px;
+    height: 690px;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+    color: #e5e7eb;
+    transform: scale(0.95);
+    transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+}
+
+.view-profiles-popup.show .view-albums-menu {
+    transform: scale(1);
+}
+
+.view-profiles-close-menu {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    color: #f3f4f6;
+    font-size: 1.3rem;
+    cursor: pointer;
+    padding: 8px;
+    transition: all 0.3s ease;
+}
+
+.view-profiles-close-menu:hover {
+    background: #ef4444;
+    color: #ffffff;
+    transform: rotate(90deg);
+}
+
+.view-profiles-menu h3 {
+    margin: 0 0 30px;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: antiquewhite;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(96, 165, 250, 0.3);
+    letter-spacing: 0.5px;
+}
+
+.view-profiles-body {
+    display: flex;
+    gap: 10px;
+    max-height: calc(85vh - 100px);
+}
+
+.profile-list-column {
+    flex: 0.6; /* Wider than other columns */
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-right: 12px;
+}
+
+.create-view-profile-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(90deg, #0288d1, #26c6da);
+    border: none;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    transition: all 0.3s ease;
+}
+
+.create-view-profile-btn:hover {
+    background: linear-gradient(90deg, #017abb, #24b6c9);
+    /* transform: translateY(-2px); */
+    /* box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4); */
+}
+
+.create-profile-form {
+    display: none;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 12px;
+}
+
+.create-profile-form.show {
+    display: block;
+}
+
+#new-profile-name {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #f3f4f6;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+#new-profile-name:focus {
+    border-color: #60a5fa;
+    box-shadow: 0 0 8px rgba(96, 165, 250, 0.3);
+    outline: none;
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center; /* flex-end */
+    margin-top: 10px;
+}
+
+#submit-profile-btn, #cancel-profile-btn, #update-profile-btn, #delete-profile-btn, #verify-profile-btn {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#submit-profile-btn {
+    width: 100%;
+    background: #22c55e;
+    color: #ffffff;
+}
+#submit-profile-btn:hover {
+    width: 100%;
+    background: #16a34a;
+    transform: scale(1.05);
+}
+
+#cancel-profile-btn {
+    width: 100%;
+    background: #ef4444;
+    color: #ffffff;
+}
+#cancel-profile-btn:hover {
+    width: 100%;
+    background: #dc2626;
+    transform: scale(1.05);
+}
+
+.form-update-actions {
+    display: block;
+    justify-content: center;
+    margin-top: 14px;
+}
+#update-profile-btn {
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+    color: #ffffff;
+}
+#update-profile-btn:hover {
+    transform: scale(1.05);
+}
+#delete-profile-btn {
+    margin-top: 13px;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, blue, #6900a5);
+    color: #ffffff;
+}
+#delete-profile-btn:hover {
+    transform: scale(1.05);
+}
+#verify-profile-btn {
+    margin-top: 13px;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 600;
+    background: rgb(73, 73, 73);
+    color: #ffffff;
+}
+#verify-profile-btn:hover {
+    transform: scale(1.05);
+}
+
+#profile-list {
+    list-style: none;
+    padding: 0 10px 0 0px; /* Added padding-right to offset scrollbar */
+    margin: 0;
+    max-height: 385px;
+    /* Scroll rules */
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(81, 81, 81) transparent;
+}
+/* #album-list::-webkit-scrollbar {
+    width: 1px;
+}
+#album-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+#album-list::-webkit-scrollbar-thumb {
+    background: grey;
+    border-radius: 3px;
+} */
+
+.profile-item {
+    display: flex; /* Sử dụng flexbox để dễ dàng căn chỉnh */
+    justify-content: space-between; /* Đẩy span sang phải */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #d1d5db;
+    transition: all 0.3s ease;
+    width: 275px;
+}
+.profile-item {
+    max-width: 275px; /* Giới hạn chiều rộng */
+    overflow: hidden; /* Ẩn nội dung tràn */
+    text-overflow: ellipsis; /* Thêm dấu "..." */
+    white-space: nowrap; /* Ngăn xuống dòng */
+}
+.profile-item:hover {
+    background: rgba(96, 165, 250, 0.15);
+    color: #ffffff;
+    transform: translateX(4px);
+}
+.profile-item.selected {
+    background: rgba(96, 165, 250, 0.3);
+    color: #ffffff;
+    border-left: 4px solid #60a5fa;
+}
+.profile-item p {
+    margin: 0px;
+}
+.profile-item .text-content {
+    flex: 1; /* Chiếm không gian còn lại */
+    overflow: hidden; /* Ẩn nội dung tràn */
+    text-overflow: ellipsis; /* Thêm dấu "..." */
+    white-space: nowrap; /* Ngăn xuống dòng */
+}
+.profile-item span {
+    color: #fff;
+    padding: 2px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, blue, #6900a5);;
+    flex-shrink: 0; /* Ngăn span bị co lại */
+    margin-left: 8px; /* Khoảng cách giữa text và span */
 }
 
 /* Column 2: Wallpapers Grid */
@@ -630,14 +1598,16 @@ a#detail-quality-url:active {
     position: absolute;
     bottom: 8px;
     right: 8px;
-    background-color: deeppink;
+    background: linear-gradient(45deg, #ff1744, #e91e63);
     color: #ffffff;
     font-size: 0.7rem;
-    font-weight: 600;
-    padding: 2px 6px;
-    border-radius: 4px;
-    box-shadow: 0 1px 2px rgba(0, 0,0, 0.2);
-    z-index: 2;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(255, 23, 68, 0.4);
+    z-index: 3;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 /* Thumb icon */
@@ -655,29 +1625,32 @@ a#detail-quality-url:active {
 
 .top-right-div {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 6px;
+    right: 6px;
     display: flex;
     flex-direction: column;
-    /* gap: 4px; */
-    /* padding: 8px; */
+    gap: 2px;
+    z-index: 3;
 }
 .adult-indicator,
 .racy-indicator {
     display: block;
-    color: #fff; /* Màu chữ */
-    padding: 2px 5px; /* Padding cho span */
-    font-size: 10px; /* Kích thước chữ */
-    font-weight: bold; /* Độ đậm của chữ */
-    text-align: center; /* Căn giữa chữ */
-    border-radius: 2px; /* Bo góc */
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    padding: 3px 6px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    margin-bottom: 2px;
 }
 .adult-indicator {
-    background-color: #d32f2f; /* Màu đỏ cho ADULT, có thể thay đổi */
+    background: linear-gradient(45deg, #d32f2f, #f44336);
 }
 .racy-indicator {
-    background-color: #3500f5; /* Màu cam cho RACY, có thể thay đổi */
+    background: linear-gradient(45deg, #3500f5, #673ab7);
 }
 
 .form-update-actions button i {
